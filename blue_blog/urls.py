@@ -5,6 +5,7 @@ from django.views.generic import TemplateView
 from django.contrib.auth.views import LoginView, LogoutView
 
 from accounts.views import UserRegistrationView
+from blog.views import NewBlogView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -12,4 +13,5 @@ urlpatterns = [
     url(r'^new-user/$', UserRegistrationView.as_view(), name='user_registration'),
     path('login/', LoginView.as_view(template_name='login.html'), name='login'),
     url(r'^logout/$', LogoutView.as_view(), {'next_page':'/login/'}, name='logout'),
+    path('blog/new/', NewBlogView.as_view(), name='new-blog'),
 ]
